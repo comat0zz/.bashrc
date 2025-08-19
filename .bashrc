@@ -89,7 +89,7 @@ fi
 # gall "commit name"
 if [[ -s $(which git) ]]; then
     alias gall='f(){ git add --all .; git commit -m "$@"; git push; }; f '
-    alias gitr='git --recursive '
+    alias gitr='git clone --recursive '
 fi
 
 if [[ -s $(which systemctl) ]]; then
