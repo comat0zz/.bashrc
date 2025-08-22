@@ -132,7 +132,7 @@ exportAdditionalTools() {
 . $IMPORTANT/git-tokens.env.sh
 
 if [[ -s $(which docker) ]]; then
-    # docker login -u "Docker Pull" -p $GIT_REGISTRY_KEY registry.gitlab.com
+    # docker login -u "Docker Pull" -p $GIT_KEY registry.gitlab.com
 
     alias docker_run='docker run --rm -it -w /projects/ -v "$(pwd)":/projects '
 fi
@@ -144,6 +144,7 @@ DISK_5GB="/media/$USER/dba5566f-66a9-4684-b2f1-98abb258530c"
 if [[ -d $DISK_1GB ]]; then
     ESP_VER=$(head -1 "$DISK_1GB/esp/.esp32-current-env")
     alias idf=". $DISK_1GB/esp/$ESP_VER/export.sh"
+    alias ibfm="if [[ -z '$ESP_IDF_VERSION' ]];then idf;fi; idf.py build flash monitor"
 
     exportAdditionalTools $DISK_1GB    
 fi
